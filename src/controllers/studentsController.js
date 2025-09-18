@@ -9,8 +9,6 @@ export const getStudents = async (req, res) => {
     perPage = 10,
     gender,
     minAvgMark,
-    // Отримуємо значення параметрів сортування
-    // дефолтне сортування по _id
     sortBy = '_id',
     sortOrder = 'asc',
   } = req.query;
@@ -34,9 +32,7 @@ export const getStudents = async (req, res) => {
     studentsQuery
       .skip(skip)
       .limit(perPage)
-      // Додамєдо сортування в ланцюжок методів квері
       .sort({ [sortBy]: sortOrder }),
-    ,
   ]);
 
   // Обчислюємо загальну кількість «сторінок»
